@@ -10,6 +10,7 @@
 
 - [Índice](#índice)
 - [Funcionalidades do projeto](#funcionalidades-do-projeto)
+- [Estrutura do porjeto](#estrutura-do-porjeto)
 - [📁 Acesso ao projeto](#-acesso-ao-projeto)
 - [🛠️ Abrir e rodar o projeto](#️-abrir-e-rodar-o-projeto)
   - [Instalando o TypeScript](#instalando-o-typescript)
@@ -30,10 +31,34 @@
 
 - `Funcionalidade 1`: descrição da funcionalidade 1
 - `Funcionalidade 2`: descrição da funcionalidade 2
-- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
+- `Funcionalidade 2`: descrição da funcionalidade 3
+- `Funcionalidade 3`: descrição da funcionalidade 4
 
 <hr>
+
+# Estrutura do porjeto
+```
+src
+│   app.js             # Classe app
+│   server.js          # Server para iniciar o app
+└───api
+  └───controllers      # Funções da controllers do express route
+    └───database
+      └───migrations   # Utilizado migrations
+      └───seeds        # Utilizado seeds
+  └───models           # Modelos do banco de dados -sequelize - orm
+  └───repositories     # Query builders
+  └───services         # Regras de negócio
+└───config             # Configuração das variaveis de ambiente / banco /email/chave secret
+└───utils              # Trechos de código pequeno
+└───helpers            # Trechos de arquitetura de código
+└───routes             # Definição de rotas express
+└───interface          # Tipagem (d.ts) para Typescript
+└───constants          # Definição de strings Error
+└───test
+  └───unit             # Testes unitarios
+  └───integartion      # Teste de integracao
+```
 
 # 📁 Acesso ao projeto
 
