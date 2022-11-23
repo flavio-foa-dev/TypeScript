@@ -19,7 +19,6 @@
     - [Exemplo 2](#exemplo-2)
     - [Configurações `Básicas`](#configurações-básicas)
 - [Construindo um arquivo `Typescript`](#construindo-um-arquivo-typescript)
-  - [Compilando seu código](#compilando-seu-código)
 - [Interfaces](#interfaces)
   - [exemplo](#exemplo)
 - [Classes](#classes)
@@ -106,20 +105,18 @@ Usando as propriedades "include" e "exclude"
 
   Por exemplo, se você está desenvolvendo um projeto que usa Node.js na versão 12 ou mais recente,
 então você pode usar o módulo npm @tsconfig/node12
-
-
+```
   "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
     "preserveConstEnums": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
-}
-
+```
 <hr>
 
 # Construindo um arquivo `Typescript`
-
+```
 function greeter(person) {
   return "Hello, " + person;
 }
@@ -132,7 +129,7 @@ document.body.textContent = greeter(user);
 tsc greeter.ts
 
 O resultado será um arquivo greeter.jsque contém o mesmo JavaScript que você inseriu. Estamos usando TypeScript em nosso aplicativo JavaScript!
-
+```
 <hr>
 
 # Interfaces
