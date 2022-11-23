@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "typescript": "^4.9.3"
+  },
+  "name": "typescript",
+  "description": "## Instalando o TypeScript npm install typescript --save-dev npx tsc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flavio-foa-dev/TypeScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flavio-foa-dev/TypeScript/issues"
+  },
+  "homepage": "https://github.com/flavio-foa-dev/TypeScript#readme"
+}
