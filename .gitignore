@@ -1,4 +1,2 @@
-node_modules
-node_module
-.env
-ts.json
+/node_modules
+/servidor-api/node_modules

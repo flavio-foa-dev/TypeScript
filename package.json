@@ -1,34 +1,17 @@
 {
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "knex": "^2.3.0",
-    "pg": "^8.8.0",
-    "typescript": "^4.9.3"
-  },
-  "name": "typescript",
-  "description": "## Instalando o TypeScript npm install typescript --save-dev npx tsc",
+  "name": "bank",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules src/serve.ts",
-    "dev": "nodemon --exec ts-node-dev ./src/serve.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flavio-foa-dev/TypeScript.git"
+    "server": "lite-server --baseDir=dist",
+    "start": "concurrently \"npm run watch\" \"npm run server\""
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/flavio-foa-dev/TypeScript/issues"
-  },
-  "homepage": "https://github.com/flavio-foa-dev/TypeScript#readme",
   "devDependencies": {
-    "@types/express": "^4.17.14",
-    "@types/node": "^18.11.18",
-    "nodemon": "^2.0.20",
-    "ts-node-dev": "^2.0.0"
+    "concurrently": "^6.0.0",
+    "lite-server": "^2.6.1"
   }
 }
