@@ -2,10 +2,12 @@ export class NegociacoesModel {
     constructor() {
         this.data = new Array();
     }
-    save(negociacao) {
+    saveTransaction(negociacao) {
         this.data.push(negociacao);
     }
-    getAll() {
-        return this.data;
+    // readonly Negociacao[]
+    getAllTransaction() {
+        //return this.data;
+        return [...this.data];
     }
 }
