@@ -16,12 +16,12 @@ export class NegociacoesView {
           ${model.getAllTransaction().map((negociacao) => {
             return `
               <tr>
-                <td>${negociacao.data}</td>
+                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
               </tr>
             `;
-        }).join('')}
+        }).join(' ')}
         </tbody>
       </table>
     `;
