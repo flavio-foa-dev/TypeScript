@@ -14,11 +14,14 @@ export class NegociacaoController {
     }
     save() {
         const negociacao = this.create();
-        this.negociacoes.saveTransaction(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        this.messageView.update("Adicionado com sucesso!");
-        console.log('oi', this.negociacoes.getAllTransaction());
-        this.cleanForm();
+        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+            this.negociacoes.saveTransaction(negociacao);
+            this.upadateViews();
+            this.cleanForm();
+        }
+        else {
+            this.messageView.update("Movimentacoes somente em dias uteis");
+        }
     }
     create() {
         const exp = /-/g;
@@ -32,6 +35,9 @@ export class NegociacaoController {
         this.inputQuantidade.value = "";
         this.inputValor.value = "";
         this.inputData.focus();
-        console.log('cleanForm');
+    }
+    upadateViews() {
+        this.negociacoesView.update(this.negociacoes);
+        this.messageView.update("Adicionado com sucesso!");
     }
 }
