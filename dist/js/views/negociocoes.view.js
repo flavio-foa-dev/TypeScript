@@ -14,7 +14,7 @@ export class NegociacoesView extends View {
           ${model.getAllTransaction().map((negociacao) => {
             return `
               <tr>
-                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                <td>${this.parseDate(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
               </tr>
@@ -23,6 +23,10 @@ export class NegociacoesView extends View {
         </tbody>
       </table>
     `;
+    }
+    parseDate(date) {
+        return new Intl.DateTimeFormat()
+            .format(date);
     }
     update(model) {
         this.element.innerHTML = this.template(model);
