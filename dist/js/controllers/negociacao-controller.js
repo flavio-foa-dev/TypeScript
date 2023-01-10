@@ -1,3 +1,4 @@
+import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
 import { MessageView } from "../views/message.view.js";
@@ -12,16 +13,18 @@ export class NegociacaoController {
         this.inputValor = document.querySelector('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
+    isDayValid(date) {
+        return date.getDay() > DayWeek.SUNDAY
+            && date.getDay() < DayWeek.SATURDAY;
+    }
     save() {
         const negociacao = this.create();
-        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-            this.negociacoes.saveTransaction(negociacao);
-            this.upadateViews();
-            this.cleanForm();
+        if (!this.isDayValid(negociacao.data)) {
+            return this.messageView.update("Movimentacoes somente em dias uteis");
         }
-        else {
-            this.messageView.update("Movimentacoes somente em dias uteis");
-        }
+        this.negociacoes.saveTransaction(negociacao);
+        this.upadateViews();
+        this.cleanForm();
     }
     create() {
         const exp = /-/g;
