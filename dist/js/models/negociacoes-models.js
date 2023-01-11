@@ -5,9 +5,7 @@ export class NegociacoesModel {
     saveTransaction(negociacao) {
         this.data.push(negociacao);
     }
-    // readonly Negociacao[]
     getAllTransaction() {
-        //return this.data;
         return [...this.data];
     }
 }
