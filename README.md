@@ -15,7 +15,11 @@
 - Vantagens do uso de enums
 - Cuidados com enums
 
-class MessageView extends
-abstract class View<T>
-abstract template(model: T): string
+- A lógica de conversão transactionS
+- Método estáticos
+- Parâmetros opcionais
+
+- class extends
+- abstract class View<T>
+- abstract template(model: T): string /implements
 

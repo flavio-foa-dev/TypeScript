@@ -5,18 +5,18 @@ import { MessageView } from "../views/message.view.js";
 import { NegociacoesView } from "../views/negociocoes.view.js";
 
 export class NegociacaoController {
-  private inputData: HTMLInputElement;
-  private inputQuantidade: HTMLInputElement;
-  private inputValor: HTMLInputElement;
+  private inputDate: HTMLInputElement;
+  private inputQuantity: HTMLInputElement;
+  private inputValue: HTMLInputElement;
   private negociacoes: NegociacoesModel = new NegociacoesModel();
   private negociacoesView = new NegociacoesView('#negotiationView');
   private messageView = new MessageView('#message-view');
 
 
   constructor(){
-    this.inputData = document.querySelector('#data');
-    this.inputQuantidade = document.querySelector('#quantidade');
-    this.inputValor = document.querySelector('#valor');
+    this.inputDate = document.querySelector('#data');
+    this.inputQuantity = document.querySelector('#quantidade');
+    this.inputValue = document.querySelector('#valor');
     this.negociacoesView.update(this.negociacoes);
   }
 
@@ -25,8 +25,13 @@ export class NegociacaoController {
       && date.getDay() < DayWeek.SATURDAY;
   }
 
-  public save(): void {
-    const negociacao = this.create();
+  public add(): void {
+    const negociacao = Negociacao.parseNegotiation(
+       this.inputDate.value,
+       this.inputQuantity.value,
+       this.inputValue.value
+    );
+
     if (!this.isDayValid(negociacao.data)) {
       return this.messageView.update("Movimentacoes somente em dias uteis")
     }
@@ -36,21 +41,11 @@ export class NegociacaoController {
     this.cleanForm();
   }
 
-  private create(): Negociacao {
-    const exp: RegExp = /-/g;
-    const data = new Date(this.inputData.value.replace(exp, ','));
-    const quantidade = parseInt(this.inputQuantidade.value);
-    const valor = parseFloat(this.inputValor.value);
-
-   return  new Negociacao(data, quantidade, valor);
-
-  }
-
   private cleanForm(): void {
-    this.inputData.value = "";
-    this.inputQuantidade.value = "";
-    this.inputValor.value = "";
-    this.inputData.focus();
+    this.inputDate.value = "";
+    this.inputQuantity.value = "";
+    this.inputValue.value = "";
+    this.inputDate.focus();
   }
 
   private upadateViews(): void {

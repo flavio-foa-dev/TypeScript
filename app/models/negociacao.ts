@@ -26,4 +26,18 @@ export class Negociacao {
   get volume(): number {
     return this._quantidade * this._valor
   }
+
+  public static parseNegotiation(
+    dateNegotiation: string,
+    quantityNegotiation:string,
+    priceNegotiation:string ): Negociacao {
+
+     const exp = /-/g;
+     const date = new Date(dateNegotiation.replace(exp, ','));
+     const quantity = parseInt(quantityNegotiation)
+     const value = parseFloat(priceNegotiation)
+
+     return new Negociacao(date, quantity, value)
+  }
+
 }
