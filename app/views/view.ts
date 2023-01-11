@@ -3,9 +3,14 @@ export abstract class View<T> {
   protected element: HTMLElement;
 
   constructor(selector: string) {
-    this.element = document.querySelector(selector);
-  }
+    const resultSelector = document.querySelector(selector)
 
+    if(resultSelector){
+      this.element = resultSelector as HTMLElement
+    } else {
+      throw new Error(`selector ${selector} not found`)
+    }
+  }
 
   protected abstract template(model: T): string
 
