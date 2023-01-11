@@ -8,17 +8,17 @@ export class NegociacaoController {
         this.negociacoes = new NegociacoesModel();
         this.negociacoesView = new NegociacoesView('#negotiationView');
         this.messageView = new MessageView('#message-view');
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        this.inputDate = document.querySelector('#data');
+        this.inputQuantity = document.querySelector('#quantidade');
+        this.inputValue = document.querySelector('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
     isDayValid(date) {
         return date.getDay() > DayWeek.SUNDAY
             && date.getDay() < DayWeek.SATURDAY;
     }
-    save() {
-        const negociacao = this.create();
+    add() {
+        const negociacao = Negociacao.parseNegotiation(this.inputDate.value, this.inputQuantity.value, this.inputValue.value);
         if (!this.isDayValid(negociacao.data)) {
             return this.messageView.update("Movimentacoes somente em dias uteis");
         }
@@ -26,18 +26,11 @@ export class NegociacaoController {
         this.upadateViews();
         this.cleanForm();
     }
-    create() {
-        const exp = /-/g;
-        const data = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        return new Negociacao(data, quantidade, valor);
-    }
     cleanForm() {
-        this.inputData.value = "";
-        this.inputQuantidade.value = "";
-        this.inputValor.value = "";
-        this.inputData.focus();
+        this.inputDate.value = "";
+        this.inputQuantity.value = "";
+        this.inputValue.value = "";
+        this.inputDate.focus();
     }
     upadateViews() {
         this.negociacoesView.update(this.negociacoes);
