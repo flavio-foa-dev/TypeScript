@@ -1,3 +1,6 @@
+
+
+
 export abstract class View<T> {
 
   protected element: HTMLElement;
@@ -12,12 +15,12 @@ export abstract class View<T> {
     }
   }
 
-  protected abstract template(model: T): string
 
-  public update(model : T): void{
+  public update(model : T): void {
     const template = this.template(model)
     this.element.innerHTML = template
   }
 
+  protected abstract template(model: T): string
 
 }
