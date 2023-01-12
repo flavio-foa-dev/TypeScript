@@ -1,6 +1,7 @@
 import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { TempExecution } from "../src/decorators/temp-execution.js";
 import { MessageView } from "../views/message.view.js";
 import { NegociacoesView } from "../views/negociocoes.view.js";
 
@@ -25,6 +26,7 @@ export class NegociacaoController {
       && date.getDay() < DayWeek.SATURDAY;
   }
 
+  @TempExecution()
   public add(): void {
     const negociacao = Negociacao.parseNegotiation(
        this.inputDate.value,
@@ -47,6 +49,7 @@ export class NegociacaoController {
     this.inputValue.value = "";
     this.inputDate.focus();
   }
+
 
   private upadateViews(): void {
     this.negociacoesView.update(this.negociacoes);
