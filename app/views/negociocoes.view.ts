@@ -1,9 +1,12 @@
 
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { ScanScriptInjector } from "../src/decorators/scanScriptInjection.js";
+import {InspectMethod} from "../src/decorators/inspect-method.js";
 import { View } from "./view.js";
 
 export class NegociacoesView extends View<NegociacoesModel> {
 
+  @ScanScriptInjector
   protected template(model:NegociacoesModel): string {
     return `
       <table class="table table-hover table-bordered">
@@ -34,6 +37,7 @@ export class NegociacoesView extends View<NegociacoesModel> {
       .format(date)
   }
 
+  @InspectMethod()
   update(model:NegociacoesModel): void {
     this.element.innerHTML = this.template(model)
   }
