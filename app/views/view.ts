@@ -1,3 +1,4 @@
+import { InspectMethod } from "../src/decorators/inspect-method.js";
 
 
 
@@ -15,7 +16,7 @@ export abstract class View<T> {
     }
   }
 
-
+  @InspectMethod()
   public update(model : T): void {
     const template = this.template(model)
     this.element.innerHTML = template

@@ -1,3 +1,5 @@
+import { InspectMethod } from "../src/decorators/inspect-method.js";
+
 export class Negociacao {
   // private _data: Date;
   // private _quantidade: number;
@@ -27,6 +29,7 @@ export class Negociacao {
     return this._quantidade * this._valor
   }
 
+  @InspectMethod()
   public static parseNegotiation(
     dateNegotiation: string,
     quantityNegotiation:string,

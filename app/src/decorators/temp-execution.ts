@@ -1,7 +1,7 @@
-export function TempExecution () {
+export function TempExecution (seconds: boolean = false) {
   return function (
     target:any,
-    propertykey:string,
+    propertyKey:string,
     descriptor: PropertyDescriptor) {
 
       const originMethod = descriptor.value
@@ -9,7 +9,7 @@ export function TempExecution () {
         const tempStart = performance.now()
         const resultReturn = originMethod.apply(this, args)
         const tempEnd = performance.now()
-        console.log(`Method ${propertykey} had the time to ${(tempEnd - tempStart)/1000} seconds`)
+        console.log(`Method ${propertyKey} had the time to ${(tempEnd - tempStart)/1000} seconds`)
         return resultReturn
       }
 
