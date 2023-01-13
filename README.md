@@ -35,5 +35,9 @@
 - Ordem de execução dos decorators
 - Portabilidade de funcionalidade antiga para decorators
 
+- Como evitar código duplicado
+- Decorator de propriedade na classe
+- Criação dinâmica de get com Object.defineProperty
+- Cache de decorators evitanto busca seem necessidades
 
 
