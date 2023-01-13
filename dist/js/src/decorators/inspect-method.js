@@ -1,11 +1,11 @@
-export function TempExecution(seconds = false) {
+export function InspectMethod() {
     return function (target, propertyKey, descriptor) {
         const originMethod = descriptor.value;
         descriptor.value = function (...args) {
-            const tempStart = performance.now();
+            console.log(`---- Method: ${propertyKey}`);
+            console.log(`-------- Params: ${JSON.stringify(args)}`);
             const resultReturn = originMethod.apply(this, args);
-            const tempEnd = performance.now();
-            console.log(`Method ${propertyKey} had the time to ${(tempEnd - tempStart) / 1000} seconds`);
+            console.log(`-------- Result: ${JSON.stringify(resultReturn)}`);
             return resultReturn;
         };
         return descriptor;
