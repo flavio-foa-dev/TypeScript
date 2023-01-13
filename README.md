@@ -30,5 +30,10 @@
 - Decorator de método
 - Logar tempo de execução com decorator
 
+- Decorator com parâmetro/sem
+- Decorator de inspeção
+- Ordem de execução dos decorators
+- Portabilidade de funcionalidade antiga para decorators
+
 
 
