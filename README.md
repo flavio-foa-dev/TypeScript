@@ -40,4 +40,9 @@
 - Criação dinâmica de get com Object.defineProperty
 - Cache de decorators evitanto busca seem necessidades
 
+- API REST
+- Consumindo API externa
+- Definindo uma interface para a API
+- Isolando o acesso à API em um serviço
+
 

@@ -1,6 +1,7 @@
 import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { TransactionService } from "../services/transactions-service.js";
 import { SelectorDom } from "../src/decorators/getSelectorDom.js";
 import { InspectMethod } from "../src/decorators/inspect-method.js";
 import { TempExecution } from "../src/decorators/temp-execution.js";
@@ -21,6 +22,7 @@ export class NegociacaoController {
   private negociacoes: NegociacoesModel = new NegociacoesModel();
   private negociacoesView = new NegociacoesView('#negotiationView');
   private messageView = new MessageView('#message-view');
+  private transactionService = new TransactionService()
 
 
   constructor(){
@@ -51,8 +53,14 @@ export class NegociacaoController {
     this.cleanForm();
   }
 
-  public imporData(): void {
-    alert("Impor data")
+  public importDataDay(): void {
+
+    this.transactionService.importTransactionDay()
+      .then((parseNegociacao: Negociacao[])=> {
+        parseNegociacao.forEach((item: any) => this.negociacoes.saveTransaction(item))
+
+        this.upadateViews()
+      })
   }
 
   private cleanForm(): void {
