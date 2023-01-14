@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { TransactionService } from "../services/transactions-service.js";
 import { SelectorDom } from "../src/decorators/getSelectorDom.js";
 import { InspectMethod } from "../src/decorators/inspect-method.js";
 import { TempExecution } from "../src/decorators/temp-execution.js";
@@ -17,6 +18,7 @@ export class NegociacaoController {
         this.negociacoes = new NegociacoesModel();
         this.negociacoesView = new NegociacoesView('#negotiationView');
         this.messageView = new MessageView('#message-view');
+        this.transactionService = new TransactionService();
         this.negociacoesView.update(this.negociacoes);
     }
     isDayValid(date) {
@@ -32,8 +34,12 @@ export class NegociacaoController {
         this.upadateViews();
         this.cleanForm();
     }
-    imporData() {
-        alert("Impor data");
+    importDataDay() {
+        this.transactionService.importTransactionDay()
+            .then((parseNegociacao) => {
+            parseNegociacao.forEach((item) => this.negociacoes.saveTransaction(item));
+            this.upadateViews();
+        });
     }
     cleanForm() {
         this.inputDate.value = "";

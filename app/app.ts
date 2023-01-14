@@ -15,7 +15,7 @@ if (form) {
 const btnImpotData = document.querySelector('#btn-import');
 if(btnImpotData) {
   btnImpotData.addEventListener("click",() => {
-    transaction.imporData()
+    transaction.importDataDay()
 
   })
 } else {
