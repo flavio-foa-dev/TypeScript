@@ -1,24 +1,30 @@
 import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { SelectorDom } from "../src/decorators/getSelectorDom.js";
 import { InspectMethod } from "../src/decorators/inspect-method.js";
 import { TempExecution } from "../src/decorators/temp-execution.js";
 import { MessageView } from "../views/message.view.js";
 import { NegociacoesView } from "../views/negociocoes.view.js";
 
 export class NegociacaoController {
+
+  @SelectorDom('#data')
   private inputDate: HTMLInputElement;
+
+  @SelectorDom('#quantidade')
   private inputQuantity: HTMLInputElement;
+
+  @SelectorDom('#valor')
   private inputValue: HTMLInputElement;
+
   private negociacoes: NegociacoesModel = new NegociacoesModel();
   private negociacoesView = new NegociacoesView('#negotiationView');
   private messageView = new MessageView('#message-view');
 
 
   constructor(){
-    this.inputDate = document.querySelector('#data') as HTMLInputElement; //casting
-    this.inputQuantity = document.querySelector('#quantidade') as HTMLInputElement;
-    this.inputValue = <HTMLInputElement> document.querySelector('#valor');
+
     this.negociacoesView.update(this.negociacoes);
   }
 
@@ -43,6 +49,10 @@ export class NegociacaoController {
     this.negociacoes.saveTransaction(negociacao);
     this.upadateViews()
     this.cleanForm();
+  }
+
+  public imporData(): void {
+    alert("Impor data")
   }
 
   private cleanForm(): void {

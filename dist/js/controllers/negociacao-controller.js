@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { DayWeek } from "../enums/days-week.js";
 import { Negociacao } from "../models/negociacao.js";
 import { NegociacoesModel } from "../models/negociacoes-models.js";
+import { SelectorDom } from "../src/decorators/getSelectorDom.js";
 import { InspectMethod } from "../src/decorators/inspect-method.js";
 import { TempExecution } from "../src/decorators/temp-execution.js";
 import { MessageView } from "../views/message.view.js";
@@ -16,9 +17,6 @@ export class NegociacaoController {
         this.negociacoes = new NegociacoesModel();
         this.negociacoesView = new NegociacoesView('#negotiationView');
         this.messageView = new MessageView('#message-view');
-        this.inputDate = document.querySelector('#data');
-        this.inputQuantity = document.querySelector('#quantidade');
-        this.inputValue = document.querySelector('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
     isDayValid(date) {
@@ -34,6 +32,9 @@ export class NegociacaoController {
         this.upadateViews();
         this.cleanForm();
     }
+    imporData() {
+        alert("Impor data");
+    }
     cleanForm() {
         this.inputDate.value = "";
         this.inputQuantity.value = "";
@@ -45,6 +46,15 @@ export class NegociacaoController {
         this.messageView.update("Adicionado com sucesso!");
     }
 }
+__decorate([
+    SelectorDom('#data')
+], NegociacaoController.prototype, "inputDate", void 0);
+__decorate([
+    SelectorDom('#quantidade')
+], NegociacaoController.prototype, "inputQuantity", void 0);
+__decorate([
+    SelectorDom('#valor')
+], NegociacaoController.prototype, "inputValue", void 0);
 __decorate([
     TempExecution(),
     InspectMethod()
