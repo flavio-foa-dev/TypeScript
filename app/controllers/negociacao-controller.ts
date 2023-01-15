@@ -56,6 +56,12 @@ export class NegociacaoController {
   public importDataDay(): void {
 
     this.transactionService.importTransactionDay()
+      .then((transactionsDay) => {
+        return transactionsDay.filter((transDay: Negociacao)  => {
+          return !this.negociacoes.getAllTransaction()
+          .some(item => item.isEqual(transDay))
+        })
+      })
       .then((parseNegociacao: Negociacao[])=> {
         parseNegociacao.forEach((item: any) => this.negociacoes.saveTransaction(item))
 

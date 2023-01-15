@@ -45,4 +45,10 @@
 - Definindo uma interface para a API
 - Isolando o acesso à API em um serviço
 
+- Aplicação prática do Polimorfismo
+- Interface de método
+- Evitando importar  duplicidades
+- Estendendo interfaces
+- TS sourmaps e debug da aplicação no navegador
+
 
