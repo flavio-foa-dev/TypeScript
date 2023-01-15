@@ -31,6 +31,18 @@ export class Negociacao {
         const value = parseFloat(priceNegotiation);
         return new Negociacao(date, quantity, value);
     }
+    parseText() {
+        return `
+      Data: ${this._data}
+      Quantidade: ${this._quantidade}
+      Valor ${this._valor}
+    `;
+    }
+    isEqual(negociacao) {
+        return this._data.getDate() === negociacao.data.getDate()
+            && this._data.getMonth() === negociacao.data.getMonth()
+            && this._data.getFullYear() === negociacao.data.getFullYear();
+    }
 }
 __decorate([
     InspectMethod()

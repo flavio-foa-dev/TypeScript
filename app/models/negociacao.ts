@@ -1,6 +1,7 @@
+import { ToCompare } from "../interface/to-compare.js";
 import { InspectMethod } from "../src/decorators/inspect-method.js";
 
-export class Negociacao {
+export class Negociacao implements ToCompare<Negociacao> {
   // private _data: Date;
   // private _quantidade: number;
   // private _valor : number;
@@ -41,6 +42,20 @@ export class Negociacao {
      const value = parseFloat(priceNegotiation)
 
      return new Negociacao(date, quantity, value)
+  }
+
+  parseText(): string {
+    return `
+      Data: ${this._data}
+      Quantidade: ${this._quantidade}
+      Valor ${this._valor}
+    `;
+  }
+
+  public isEqual(negociacao: Negociacao): boolean {
+    return this._data.getDate() === negociacao.data.getDate()
+      && this._data.getMonth() === negociacao.data.getMonth()
+      && this._data.getFullYear() === negociacao.data.getFullYear()
   }
 
 }
